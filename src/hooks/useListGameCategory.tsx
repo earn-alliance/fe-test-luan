@@ -1,22 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosPromise } from "axios";
-import { GamesFetchResponse } from "../types/games-response";
+import { GameCategoryFetchResponse } from "../types/games-response";
 
 const API_URL = process.env.REACT_APP_API_KEY as string;
 const HASURA_API_KEY = process.env.REACT_APP_HASURA_KEY;
 
-const fetcher = (): AxiosPromise<GamesFetchResponse> => {
+const fetcher = (): AxiosPromise<GameCategoryFetchResponse> => {
   return axios.post(
     API_URL,
     {
-      query: `query GameListQuery {
-          games {
-            name
-            id
-            directory_gif_name
-            directory_image_name
-          }
-        }`,
+      query: `query GameCategoryQuery {
+        game_genre_types {
+          genre_name
+        }
+      }`,
     },
     {
       headers: {
@@ -27,11 +24,11 @@ const fetcher = (): AxiosPromise<GamesFetchResponse> => {
   );
 };
 
-export const useGameList = () => {
+export const useListGameCategory = () => {
   const { data } = useQuery({
     queryFn: fetcher,
-    queryKey: ["games"],
+    queryKey: ["game-category"],
   });
 
-  return { data: data?.data?.data?.games };
+  return { data: data?.data?.data?.game_genre_types };
 };
