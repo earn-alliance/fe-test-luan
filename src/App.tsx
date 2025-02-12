@@ -5,13 +5,11 @@ import { Home } from "./pages/Home";
 const client = new QueryClient();
 function App() {
   return (
-    <div className="w-full bg-gray-900">
-      <FilterContextProvider>
-        <QueryClientProvider client={client}>
-          <Home />
-        </QueryClientProvider>
-      </FilterContextProvider>
-    </div>
+    <FilterContextProvider>
+      <QueryClientProvider client={client}>
+        <Home />
+      </QueryClientProvider>
+    </FilterContextProvider>
   );
 }
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Game } from "../types/game";
+import { Game } from "../types/games-response";
 
 export const CardGame = ({
   id,

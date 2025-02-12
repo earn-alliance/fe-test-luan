@@ -1,28 +1,23 @@
-import { ChangeEvent, KeyboardEvent, useState } from "react";
+import { ChangeEvent } from "react";
+import { useFilter } from "../hooks/useFilter";
 
 interface SearchInputProps {
   placeholder: string;
-  onSearch: (searchTerm: string) => void;
+  onSearch: (search: string) => void;
 }
 
 export const SearchInput = ({
   placeholder = "Search...",
   onSearch,
 }: SearchInputProps) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const { search, setSearch } = useFilter();
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+    setSearch(event.target.value);
   };
 
   const handleSearch = () => {
-    onSearch(searchTerm);
-  };
-
-  const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      handleSearch();
-    }
+    onSearch(search);
   };
 
   return (
@@ -30,9 +25,8 @@ export const SearchInput = ({
       <input
         type="text"
         placeholder={placeholder}
-        value={searchTerm}
+        value={search}
         onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
         className="w-full bg-transparent outline-none text-white"
       />
       <button

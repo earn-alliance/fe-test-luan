@@ -1,22 +1,43 @@
-import { useGameList } from "../hooks/useGamesList";
+import { useFilter } from "../hooks/useFilter";
+import { useFindGameByName } from "../hooks/useFindGameByName";
 import { CardGame } from "./CardGame";
 
 export const CardGameList = () => {
-  const { data: games } = useGameList();
+  const { search } = useFilter();
+  const { data: gamesByName } = useFindGameByName(search);
+
+  if (!gamesByName?.length) {
+    return (
+      <div className="w-full h-[100vh] flex flex-col items-center justify-center">
+        <p className="text-yellow-400 mb-4">
+          HMM, WE SEARCHED FAR AND WIDE AND NOTHING TURNED UP.
+        </p>
+        <p>TRY SOMETHING ELSE!</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="grid grid-cols-1 items-center justify-center gap-4 mt-6 md:grid-cols-3   ">
-      {games?.map((game) => {
-        return (
-          <CardGame
-            key={game?.id}
-            id={game?.id}
-            directory_image_name={game.directory_image_name}
-            directory_gif_name={game.directory_gif_name}
-            name={game.name}
-          />
-        );
-      })}
-    </div>
+    <>
+      <div className="w-[69.3%] grid grid-cols-2 mt-4 p-4 ">
+        <p className="text-white font-bold">
+          Search result:{" "}
+          <span className="text-yellow-400 font-bold">{search}</span>
+        </p>
+      </div>
+      <div className="grid grid-cols-1 items-center justify-center gap-4 mt-6 md:grid-cols-3">
+        {gamesByName?.map((game) => {
+          return (
+            <CardGame
+              key={game?.id}
+              id={game?.id}
+              directory_image_name={game.directory_image_name}
+              directory_gif_name={game.directory_gif_name}
+              name={game.name}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 };
