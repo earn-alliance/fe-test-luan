@@ -4,8 +4,11 @@ import { createContext, useState } from "react";
 export const FilterContext = createContext({
   search: "",
   gameBygenre: "",
+  isLive: true,
+
   setSearch: (value: string) => {},
   setGameByGenre: (value: string) => {},
+  setIsLive: (value: boolean) => {},
 });
 
 interface ProviderProps {
@@ -15,10 +18,18 @@ interface ProviderProps {
 export function FilterContextProvider({ children }: ProviderProps) {
   const [search, setSearch] = useState("");
   const [gameBygenre, setGameByGenre] = useState("");
+  const [isLive, setIsLive] = useState(true);
 
   return (
     <FilterContext.Provider
-      value={{ search, gameBygenre, setSearch, setGameByGenre }}
+      value={{
+        search,
+        gameBygenre,
+        isLive,
+        setSearch,
+        setGameByGenre,
+        setIsLive,
+      }}
     >
       {children}
     </FilterContext.Provider>

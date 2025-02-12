@@ -1,16 +1,16 @@
 import { useFilter } from "../hooks/useFilter";
+import { useFilteredGames } from "../hooks/useFilteredGames";
 import { useFindGameByName } from "../hooks/useFindGameByName";
-import { useFindGameByGenre } from "../hooks/useFindGamesByGenre";
 import { GenreEnum } from "../types/filter-types";
 import { CardGame } from "./CardGame";
 
 export const CardGameList = () => {
-  const { search } = useFilter();
-  const { gameBygenre } = useFilter();
+  const { search, gameBygenre, isLive } = useFilter();
   const { data: gamesByName } = useFindGameByName(search);
-  const { data: gamesByGenre } = useFindGameByGenre(
+  const { data: gamesByGenre } = useFilteredGames(
     gameBygenre as GenreEnum,
     search as string,
+    isLive,
   );
 
   const hasGamesByName = gamesByName && gamesByName.length > 0;
@@ -20,7 +20,7 @@ export const CardGameList = () => {
     if (gameBygenre && hasGamesByGenre) {
       return (
         <div className="grid grid-cols-1 items-center justify-center gap-4 mt-6 md:grid-cols-3">
-          {gamesByGenre?.map((game) => (
+          {gamesByGenre.map((game) => (
             <CardGame
               key={game.id}
               id={game.id}
@@ -31,10 +31,10 @@ export const CardGameList = () => {
           ))}
         </div>
       );
-    } else if (gamesByName && hasGamesByName) {
+    } else if (hasGamesByName) {
       return (
         <div className="grid grid-cols-1 items-center justify-center gap-4 mt-6 md:grid-cols-3">
-          {gamesByName?.map((game) => (
+          {gamesByName.map((game) => (
             <CardGame
               key={game.id}
               id={game.id}
@@ -47,7 +47,7 @@ export const CardGameList = () => {
       );
     } else {
       return (
-        <div className="w-full h-[100vh] flex flex-col items-center justify-center">
+        <div className="w-full h-[100vh] flex flex-col items-center justify-center pb-10">
           <p className="text-yellow-400 mb-4">
             HMM, WE SEARCHED FAR AND WIDE AND NOTHING TURNED UP.
           </p>
@@ -57,16 +57,5 @@ export const CardGameList = () => {
     }
   };
 
-  return (
-    <>
-      <div className="w-[69.3%] grid grid-cols-2 mt-4 p-4 ">
-        <p className="text-white font-bold">
-          Search result:{" "}
-          <span className="text-yellow-400 font-bold">{search}</span>
-        </p>
-      </div>
-
-      {renderGames()}
-    </>
-  );
+  return <>{renderGames()}</>;
 };

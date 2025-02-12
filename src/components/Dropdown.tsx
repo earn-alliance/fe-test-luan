@@ -65,13 +65,9 @@ export const Dropdown: React.FC = () => {
           </svg>
         </button>
       </div>
-      {/* TODO: Transformar valores do options para ENUM para enviar para o 
-        hook e fazer a requisao usando ENUM e nao string!
-      
-      */}
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-gray-900 ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5">
           <div
             className="py-1"
             role="menu"
