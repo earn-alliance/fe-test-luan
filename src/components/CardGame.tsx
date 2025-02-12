@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { Game } from "../types/games-response";
 
 export const CardGame = ({
-  id,
   name,
   directory_image_name,
   directory_gif_name,
-  genres,
+  genres = [],
   is_live,
 }: Game) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -21,18 +20,14 @@ export const CardGame = ({
     gifImage.onload = () => setGifLoaded(true);
   }, [directory_gif_name]);
 
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
-
   return (
     <div
-      key={id}
       className="relative overflow-hidden w-[26.8125rem] h-[15.5625rem] flex 
-      flex-col border-2 border-yellow-300 cursor-pointer transition-all 
+      flex-col border-2 border-yellow-300 cursor-pointer transition-all rounded-md
       duration-300 ease-in-out transform hover:scale-105 hover:shadow-glow 
       hover:outline hover:outline-2 hover:outline-yellow-300"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <img
         className="object-fill w-full h-full transition-opacity duration-300"
@@ -53,9 +48,10 @@ export const CardGame = ({
         {name}
       </p>
 
-      <div
-        className={`${isHovered ? "absolute bottom-0 inset-0 bg-gradient-to-t from-black/100 to-transparent pointer-events-none" : ""}`}
-      ></div>
+      {isHovered && (
+        <div className="absolute bottom-0 inset-0 bg-gradient-to-t from-black/100 to-transparent pointer-events-none"></div>
+      )}
+
       <div
         className={`absolute bottom-4 left-4 right-4 text-white text-sm transition-opacity duration-1000 ease-out ${
           isHovered ? "opacity-100" : "opacity-0"
@@ -64,7 +60,7 @@ export const CardGame = ({
         {description}
 
         <div className="w-full flex items-center justify-between mt-2">
-          <div className="flex items-center gap-3 border-[1px] border-yellow-400 p-1 rounded-md">
+          <div className="flex items-center gap-3 border-yellow-400 p-1 rounded-md">
             {genres?.map((genre) => {
               return (
                 <span

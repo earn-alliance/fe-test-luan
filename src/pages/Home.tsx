@@ -1,6 +1,5 @@
 import { CardGameList } from "../components/CardGameList";
 import { Filter } from "../components/Filter";
-
 import { Header } from "../components/Header";
 
 export const Home = () => {

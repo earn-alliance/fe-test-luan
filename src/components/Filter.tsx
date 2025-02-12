@@ -6,25 +6,18 @@ import { useFilter } from "../hooks/useFilter";
 export const Filter = () => {
   const { search, setSearch, setGameByGenre, setIsLive } = useFilter();
 
-  const handleSearch = (searchTerm: string) => {
-    setSearch(searchTerm);
-  };
-
   const handleResetFilter = () => {
     setSearch("");
     setGameByGenre("");
     setIsLive(false);
   };
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 p-4 bg-gray-800 rounded-md shadow-md h-64">
       <p className="text-white font-bold">
         Search result:{" "}
         <span className="text-yellow-400 font-bold">{search}</span>
       </p>
-      <SearchInput
-        placeholder="Search for a game by name..."
-        onSearch={handleSearch}
-      />
+      <SearchInput placeholder="Search for a game by name..." />
 
       <div className="flex items-center justify-start">
         <Toggle trueLabel="Live" falseLabel="Offline" />
@@ -33,8 +26,9 @@ export const Filter = () => {
       <div className="w-full flex items-center justify-center gap-2">
         <Dropdown />
         <button
-          className="w-24 flex items-center justify-center  border-2 border-yellow-500 rounded-md p-1 hover:bg-yellow-400 text-white transition duration-500"
-          onClick={() => handleResetFilter()}
+          className="w-24 flex items-center justify-center border-2 border-yellow-500 rounded-md p-1 hover:bg-yellow-400 text-white transition duration-300"
+          onClick={handleResetFilter}
+          aria-label="Reset filters"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +36,7 @@ export const Filter = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6"
+            className="w-6 h-6"
           >
             <path
               strokeLinecap="round"

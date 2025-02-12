@@ -5,6 +5,10 @@ import { GameByGenreResponse } from "../types/games-response";
 const API_URL = process.env.REACT_APP_API_KEY as string;
 const HASURA_API_KEY = process.env.REACT_APP_HASURA_KEY;
 
+if (!API_URL || !HASURA_API_KEY) {
+  throw new Error("Missing API_URL or HASURA_API_KEY environment variables");
+}
+
 const fetchGames = (
   genreName?: string,
   name?: string,
@@ -54,7 +58,7 @@ export const useFilteredGames = (
   const { data, isLoading, isError } = useQuery({
     queryKey: ["games", genreName, name, isLive],
     queryFn: () => fetchGames(genreName, name, isLive),
-    enabled: API_URL !== undefined,
+    enabled: Boolean(API_URL),
   });
 
   return {

@@ -5,6 +5,10 @@ import { GamesFetchResponse } from "../types/games-response";
 const API_URL = process.env.REACT_APP_API_KEY as string;
 const HASURA_API_KEY = process.env.REACT_APP_HASURA_KEY;
 
+if (!API_URL || !HASURA_API_KEY) {
+  throw new Error("Missing API_URL or HASURA_API_KEY environment variables");
+}
+
 const fetcher = (): AxiosPromise<GamesFetchResponse> => {
   return axios.post(
     API_URL,

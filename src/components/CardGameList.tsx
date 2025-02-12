@@ -18,7 +18,7 @@ export const CardGameList = () => {
 
   if (isLoading) {
     return (
-      <div className="w-full flex items-center justify-center flex-col">
+      <div className="w-full flex flex-col items-center justify-center">
         <p className="text-white text-xl font-bold">Loading...</p>
       </div>
     );
@@ -26,7 +26,7 @@ export const CardGameList = () => {
 
   if (!gamesByGenre.length) {
     return (
-      <div className="w-full flex items-center justify-center flex-col">
+      <div className="w-full flex flex-col items-center justify-center">
         <p className="text-yellow-400">
           HMM, WE SEARCHED FAR AND WIDE AND NOTHING TURNED UP.
         </p>
@@ -36,18 +36,8 @@ export const CardGameList = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 items-center justify-center gap-6 mt-6 md:grid-cols-3">
-      {gamesByGenre?.map((game) => (
-        <CardGame
-          key={game.id}
-          id={game.id}
-          directory_image_name={game.directory_image_name}
-          directory_gif_name={game.directory_gif_name}
-          name={game.name}
-          is_live={game.is_live}
-          genres={game.genres}
-        />
-      ))}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6  place-items-center">
+      {gamesByGenre?.map((game) => <CardGame key={game.id} {...game} />)}
     </div>
   );
 };

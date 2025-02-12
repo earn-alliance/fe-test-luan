@@ -17,5 +17,4 @@ if (rootElement) {
   console.error("Elemento com id 'root' não encontrado no DOM.");
 }
 
-// Opcional: Medir desempenho da aplicação
 reportWebVitals();

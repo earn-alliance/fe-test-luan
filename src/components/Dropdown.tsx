@@ -6,11 +6,11 @@ export const Dropdown: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const { data: genre } = useListGameCategory();
+  const { data: genres } = useListGameCategory();
   const { gameBygenre, setGameByGenre } = useFilter();
 
   const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   const closeDropdown = () => {
@@ -74,16 +74,16 @@ export const Dropdown: React.FC = () => {
             aria-orientation="vertical"
             aria-labelledby="options-menu"
           >
-            {genre?.map((category) => {
+            {genres?.map((genre) => {
               return (
-                <option
-                  value={category.genre_name}
-                  key={category.genre_name}
-                  className="cursor-pointer block px-4 py-2 text-sm text-white hover:bg-gray-800 hover:text-yellow-200"
-                  onClick={() => handleOptionClick(category.genre_name)}
+                <button
+                  value={genre.genre_name}
+                  key={genre.genre_name}
+                  className="w-full text-left block px-4 py-2 text-sm text-white hover:bg-gray-700 hover:text-yellow-200"
+                  onClick={() => handleOptionClick(genre.genre_name)}
                 >
-                  {category?.genre_name}
-                </option>
+                  {genre?.genre_name}
+                </button>
               );
             })}
           </div>
