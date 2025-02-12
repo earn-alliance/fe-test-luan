@@ -4,9 +4,10 @@ import { Header } from "../components/Header";
 
 export const Home = () => {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center ">
+    <div className="w-full flex flex-col justify-center gap-4">
       <Header />
-      <div className="w-full md:grid gap-10 mt-10 px-5 lg:flex">
+
+      <div className="lg:grid grid-cols-[30%_70%] xl:grid-cols-[20%_70%]">
         <Filter />
         <CardGameList />
       </div>

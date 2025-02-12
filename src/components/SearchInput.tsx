@@ -15,7 +15,7 @@ export const SearchInput: FC<SearchInputProps> = ({
   };
 
   return (
-    <div className=" w-full flex items-center border-[1px] border-yellow-400 rounded-md px-2 py-1 md:w-96">
+    <div className="w-full flex items-center border-[1px] border-yellow-400 rounded-md px-2 py-1 md:w-[55%] lg:w-full">
       <input
         type="text"
         placeholder={placeholder}

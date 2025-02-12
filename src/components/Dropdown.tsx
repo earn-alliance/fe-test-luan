@@ -42,7 +42,10 @@ export const Dropdown: React.FC = () => {
   };
 
   return (
-    <div className="w-full relative inline-block text-left " ref={dropdownRef}>
+    <div
+      className="w-full relative inline-block text-left z-10"
+      ref={dropdownRef}
+    >
       <div>
         <button
           type="button"

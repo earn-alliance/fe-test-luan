@@ -36,7 +36,7 @@ export const CardGameList = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6  place-items-center">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 place-items-center mx-5">
       {gamesByGenre?.map((game) => <CardGame key={game.id} {...game} />)}
     </div>
   );

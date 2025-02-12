@@ -11,8 +11,9 @@ export const Filter = () => {
     setGameByGenre("");
     setIsLive(false);
   };
+
   return (
-    <div className="flex flex-col gap-4 p-4 bg-gray-800 rounded-md shadow-md h-64">
+    <div className="flex flex-col gap-8 p-4 bg-gray-800 rounded-md shadow-md h-64 mb-5 mx-5">
       <p className="text-white font-bold">
         Search result:{" "}
         <span className="text-yellow-400 font-bold">{search}</span>
@@ -23,10 +24,10 @@ export const Filter = () => {
         <Toggle trueLabel="Live" falseLabel="Offline" />
       </div>
 
-      <div className="w-full flex items-center justify-center gap-2">
+      <div className="w-full flex items-center justify-center gap-2 md:w-[55%] lg:w-full">
         <Dropdown />
         <button
-          className="w-24 flex items-center justify-center border-2 border-yellow-500 rounded-md p-1 hover:bg-yellow-400 text-white transition duration-300"
+          className="w-24 flex items-center justify-center border-2 border-yellow-500 rounded-md p-1.5 hover:bg-yellow-400 text-white transition duration-300 md:p-1"
           onClick={handleResetFilter}
           aria-label="Reset filters"
         >

@@ -22,15 +22,15 @@ export const CardGame = ({
 
   return (
     <div
-      className="relative overflow-hidden w-[26.8125rem] h-[15.5625rem] flex 
+      className="relative overflow-hidden w-full h-[300px] flex 
       flex-col border-2 border-yellow-300 cursor-pointer transition-all rounded-md
       duration-300 ease-in-out transform hover:scale-105 hover:shadow-glow 
-      hover:outline hover:outline-2 hover:outline-yellow-300"
+      hover:outline hover:outline-2 hover:outline-yellow-300 mx-16 z-0"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <img
-        className="object-fill w-full h-full transition-opacity duration-300"
+        className="object-cover w-full h-full transition-opacity duration-300"
         src={
           isHovered && gifLoaded
             ? `/images/${directory_gif_name}`
