@@ -12,9 +12,7 @@ export interface GameType {
 }
 
 type GenreName = {
-  genres: {
-    genre_name: string;
-  };
+  genre_name: string;
 };
 export interface GenreTypeResponse {
   data: {

@@ -1,15 +1,28 @@
+import { useEffect } from "react";
 import { useFilter } from "../hooks/useFilter";
 import { useFilteredGames } from "../hooks/useFilteredGames";
 import { GenreEnum } from "../types/filter-types";
 import { CardGame } from "./CardGame";
 
 export const CardGameList = () => {
-  const { search, gameBygenre, isLive } = useFilter();
-  const { games: gamesByGenre } = useFilteredGames(
+  const { search, gameBygenre, setIsLive, isLive } = useFilter();
+  const { games: gamesByGenre, isLoading } = useFilteredGames(
     gameBygenre as GenreEnum,
     search as string,
     isLive,
   );
+
+  useEffect(() => {
+    setIsLive(false);
+  }, [setIsLive]);
+
+  if (isLoading) {
+    return (
+      <div className="w-full flex items-center justify-center flex-col">
+        <p className="text-white text-xl font-bold">Loading...</p>
+      </div>
+    );
+  }
 
   if (!gamesByGenre.length) {
     return (

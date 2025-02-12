@@ -42,11 +42,11 @@ export const Dropdown: React.FC = () => {
   };
 
   return (
-    <div className="relative inline-block text-left " ref={dropdownRef}>
+    <div className="w-full relative inline-block text-left " ref={dropdownRef}>
       <div>
         <button
           type="button"
-          className="inline-flex justify-center w-full rounded-md border  border-yellow-300 shadow-sm px-4 py-2 bg-transparent text-sm font-medium text-white hover:bg-gray-500 focus:outline-none focus:ring-offset-2"
+          className="inline-flex justify-center w-full rounded-md border  border-yellow-300 shadow-sm px-4 py-2 bg-transparent text-sm font-medium text-white hover:bg-yellow-500  transition duration-500"
           onClick={toggleDropdown}
         >
           {gameBygenre || "Select Genre"}
@@ -69,7 +69,7 @@ export const Dropdown: React.FC = () => {
       {isOpen && (
         <div className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5">
           <div
-            className="py-1"
+            className="py-1 max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="options-menu"

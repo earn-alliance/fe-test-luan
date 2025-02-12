@@ -44,8 +44,6 @@ export const CardGame = ({
         alt={name}
       />
 
-      <div className="absolute bottom-0 inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
-
       <p
         className={`absolute left-1/2 transform -translate-x-1/2 text-white text-lg font-bold 
           transition-all duration-1000 ease-out ${
@@ -56,23 +54,32 @@ export const CardGame = ({
       </p>
 
       <div
+        className={`${isHovered ? "absolute bottom-0 inset-0 bg-gradient-to-t from-black/100 to-transparent pointer-events-none" : ""}`}
+      ></div>
+      <div
         className={`absolute bottom-4 left-4 right-4 text-white text-sm transition-opacity duration-1000 ease-out ${
           isHovered ? "opacity-100" : "opacity-0"
         }`}
       >
         {description}
 
-        <div className="flex space-x-2">
-          {genres?.map((genre) => (
-            <span
-              key={genre?.genres?.genre_name}
-              className="text-lg text-white"
-            >
-              {genre?.genres?.genre_name}
-            </span>
-          ))}
+        <div className="w-full flex items-center justify-between mt-2">
+          <div className="flex items-center gap-3 border-[1px] border-yellow-400 p-1 rounded-md">
+            {genres?.map((genre) => {
+              return (
+                <span
+                  key={genre?.genre_name}
+                  className="text-md text-yellow-400"
+                >
+                  {genre?.genre_name}
+                </span>
+              );
+            })}
+          </div>
 
-          <p className="text-white text-lg">{is_live ? "Live" : "Offline"}</p>
+          <p className="text-white text-lg drop-shadow-md">
+            {is_live ? "Live" : "Offline"}
+          </p>
         </div>
       </div>
     </div>
