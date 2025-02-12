@@ -15,7 +15,7 @@ export const SearchInput: FC<SearchInputProps> = ({
   };
 
   return (
-    <div className="w-full flex items-center border-[1px] border-yellow-400 rounded-md px-2 py-1 md:w-[55%] lg:w-full">
+    <div className="w-full flex items-center border-[1px] border-custom-yellow rounded-md px-2 py-1 md:w-[55%] lg:w-full">
       <input
         type="text"
         placeholder={placeholder}
@@ -31,7 +31,7 @@ export const SearchInput: FC<SearchInputProps> = ({
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 text-yellow-400"
+          className="w-6 h-6 text-custom-yellow"
         >
           <path
             strokeLinecap="round"

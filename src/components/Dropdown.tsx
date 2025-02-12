@@ -49,7 +49,7 @@ export const Dropdown: React.FC = () => {
       <div>
         <button
           type="button"
-          className="inline-flex justify-center w-full rounded-md border  border-yellow-300 shadow-sm px-4 py-2 bg-transparent text-sm font-medium text-white hover:bg-yellow-500  transition duration-500"
+          className="inline-flex justify-center w-full rounded-md border  border-yellow-300 shadow-sm px-4 py-2 bg-transparent text-sm font-medium text-white hover:bg-custom-yellow transition duration-500"
           onClick={toggleDropdown}
         >
           {gameBygenre || "Select Genre"}

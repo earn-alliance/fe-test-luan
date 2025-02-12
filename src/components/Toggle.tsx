@@ -19,7 +19,7 @@ export const Toggle = ({ falseLabel, trueLabel }: ToggleProps) => {
         <input
           id="switch-component-on"
           type="checkbox"
-          className="peer appearance-none w-11 h-5 bg-slate-200 rounded-full checked:bg-yellow-400 cursor-pointer "
+          className="peer appearance-none w-11 h-5 bg-slate-200 rounded-full checked:bg-custom-yellow cursor-pointer "
           checked={isLive}
           onChange={handleToggleChange}
         />

@@ -27,7 +27,7 @@ export const CardGameList = () => {
   if (!gamesByGenre.length) {
     return (
       <div className="w-full flex flex-col items-center justify-center">
-        <p className="text-yellow-400">
+        <p className="text-custom-yellow">
           HMM, WE SEARCHED FAR AND WIDE AND NOTHING TURNED UP.
         </p>
         <p>TRY SOMETHING ELSE!</p>
