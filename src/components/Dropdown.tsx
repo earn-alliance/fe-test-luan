@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useListGameCategory } from "../hooks/useListGameCategory";
+import { useFilter } from "../hooks/useFilter";
 
 export const Dropdown: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const { data: categories } = useListGameCategory();
+
+  const { data: genre } = useListGameCategory();
+  const { gameBygenre, setGameByGenre } = useFilter();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -35,18 +38,18 @@ export const Dropdown: React.FC = () => {
 
   const handleOptionClick = (value: string) => {
     closeDropdown();
-    console.log("Opção clicada:", value);
+    setGameByGenre(value);
   };
 
   return (
-    <div className="relative inline-block text-left" ref={dropdownRef}>
+    <div className="relative inline-block text-left " ref={dropdownRef}>
       <div>
         <button
           type="button"
-          className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="inline-flex justify-center w-full rounded-md border  border-yellow-300 shadow-sm px-4 py-2 bg-transparent text-sm font-medium text-white hover:bg-gray-500 focus:outline-none focus:ring-offset-2"
           onClick={toggleDropdown}
         >
-          Opções
+          {gameBygenre || "Select Genre"}
           <svg
             className="-mr-1 ml-2 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
@@ -62,21 +65,25 @@ export const Dropdown: React.FC = () => {
           </svg>
         </button>
       </div>
+      {/* TODO: Transformar valores do options para ENUM para enviar para o 
+        hook e fazer a requisao usando ENUM e nao string!
+      
+      */}
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-gray-900 ring-1 ring-black ring-opacity-5">
           <div
             className="py-1"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="options-menu"
           >
-            {categories?.map((category) => {
+            {genre?.map((category) => {
               return (
                 <option
                   value={category.genre_name}
                   key={category.genre_name}
-                  className="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  className="cursor-pointer block px-4 py-2 text-sm text-white hover:bg-gray-800 hover:text-yellow-200"
                   onClick={() => handleOptionClick(category.genre_name)}
                 >
                   {category?.genre_name}

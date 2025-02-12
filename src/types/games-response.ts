@@ -4,6 +4,7 @@ export interface Game {
   directory_gif_name?: string;
   directory_image_name?: string;
   genres?: GenreName[];
+  is_live?: boolean;
 }
 
 export interface GameType {
@@ -34,6 +35,12 @@ export interface GameCategoryFetchResponse {
 }
 
 export interface GameByNameFetchResponse {
+  data: {
+    games: Game[];
+  };
+}
+
+export interface GameByGenreResponse {
   data: {
     games: Game[];
   };

@@ -10,7 +10,7 @@ const fetcher = (regexValue: string): AxiosPromise<GenreTypeResponse> => {
     API_URL,
     {
       query: `query GameByName($regexValue: String!) {
-        games(where: {name: {_regex: $regexValue}}) {
+        games(where: {name: {_iregex: $regexValue}}) {
           name
           directory_gif_name
           directory_image_name

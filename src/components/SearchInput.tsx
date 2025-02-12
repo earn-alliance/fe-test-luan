@@ -8,16 +8,11 @@ interface SearchInputProps {
 
 export const SearchInput = ({
   placeholder = "Search...",
-  onSearch,
 }: SearchInputProps) => {
   const { search, setSearch } = useFilter();
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
-  };
-
-  const handleSearch = () => {
-    onSearch(search);
   };
 
   return (
@@ -29,11 +24,21 @@ export const SearchInput = ({
         onChange={handleInputChange}
         className="w-full bg-transparent outline-none text-white"
       />
-      <button
-        className="bg-gray-500 p-2 rounded-lg text-white  hover: transition-all duration-300 ease-in-out hover:scale-110 hover:bg-yellow-400"
-        onClick={handleSearch}
-      >
-        Search
+      <button disabled={true}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="size-6 text-yellow-400"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+          />
+        </svg>
       </button>
     </div>
   );

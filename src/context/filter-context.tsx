@@ -3,9 +3,9 @@ import { createContext, useState } from "react";
 
 export const FilterContext = createContext({
   search: "",
-  category: "",
+  gameBygenre: "",
   setSearch: (value: string) => {},
-  setCategory: (value: string) => {},
+  setGameByGenre: (value: string) => {},
 });
 
 interface ProviderProps {
@@ -14,11 +14,11 @@ interface ProviderProps {
 
 export function FilterContextProvider({ children }: ProviderProps) {
   const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("");
+  const [gameBygenre, setGameByGenre] = useState("");
 
   return (
     <FilterContext.Provider
-      value={{ search, category, setSearch, setCategory }}
+      value={{ search, gameBygenre, setSearch, setGameByGenre }}
     >
       {children}
     </FilterContext.Provider>

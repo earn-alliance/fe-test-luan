@@ -16,7 +16,7 @@ We do not score your design skills, but we want to gain an overall understanding
 
 The user should be able to organise the directory content by:
 
-- Searching for games by name
+- Searching for games by name [✅]
 - Filter by selecting a category from a dropdown
 - Toggling live/non-live games
 
