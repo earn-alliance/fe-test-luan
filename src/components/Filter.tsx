@@ -13,7 +13,7 @@ export const Filter = () => {
   };
 
   return (
-    <div className="flex flex-col gap-8 p-4 bg-gray-800 rounded-md shadow-md h-64 mb-5 mx-5">
+    <div className="flex flex-col gap-8 p-4 bg-gray-800 rounded-md shadow-md h-[298px] mb-5 mx-5">
       <p className="text-white font-bold">
         Search result:{" "}
         <span className="text-custom-yellow font-bold">{search}</span>
