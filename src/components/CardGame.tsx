@@ -42,7 +42,7 @@ export const CardGame = ({
         alt={name}
       />
 
-      <div className="absolute bottom-0 inset-x-0 p-2 text-white text-sm bg-[#476072] transition-opacity duration-1000 ease-out">
+      <div className="absolute bottom-0 inset-x-0 p-2 text-white text-sm bg-custom-gray transition-opacity duration-1000 ease-out">
         <div className="flex flex-col">
           {is_live ? (
             <p className="text-green-500 font-bold text-xl">Live</p>
@@ -70,7 +70,7 @@ export const CardGame = ({
       )}
 
       <div
-        className={`absolute w-full bottom-0 p-2 text-white text-sm transition-opacity duration-300 ease-in bg-[#476072] h-32 ${
+        className={`absolute w-full bottom-0 p-2 text-white text-sm transition-opacity duration-300 ease-in bg-custom-gray h-32 ${
           isHovered ? "opacity-100" : "opacity-0"
         }`}
       >

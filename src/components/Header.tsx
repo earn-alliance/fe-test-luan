@@ -1,3 +1,4 @@
+import { ConnectWallet } from "./ConnectWallet";
 import Logo from "./Logo";
 
 export const Header = () => {
@@ -7,6 +8,7 @@ export const Header = () => {
         <div className="w-24 h-14 mt-4">
           <Logo />
         </div>
+        <ConnectWallet />
       </div>
     </header>
   );
