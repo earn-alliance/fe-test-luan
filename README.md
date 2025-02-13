@@ -16,17 +16,17 @@ We do not score your design skills, but we want to gain an overall understanding
 
 The user should be able to organise the directory content by:
 
-- Searching for games by name
-- Filter by selecting a category from a dropdown
-- Toggling live/non-live games
+- Searching for games by name [✅]
+- Filter by selecting a category from a dropdown [✅]
+- Toggling live/non-live games [✅]
 
 When the user hovers over a game module in the directory it should:
 
-- Smoothly scale up module slightly with an ease-in / ease-out transition effect
-- At the same time as the scale up - fade in a light glow behind the selected module and add stroke around it
-- At the same time as the scale-up - fade out the “live” and genre. Move the game title up.
-- At the same time as the scale-up - reveal a short 1 line description below the title.
-- At the same time as the scale-up - play animated gif in the area where the key art normally resides.
+- Smoothly scale up module slightly with an ease-in / ease-out transition effect [✅]
+- At the same time as the scale up - fade in a light glow behind the selected module and add stroke around it [✅]
+- At the same time as the scale-up - fade out the “live” and genre. Move the game title up. [✅]
+- At the same time as the scale-up - reveal a short 1 line description below the title. ✅
+- At the same time as the scale-up - play animated gif in the area where the key art normally resides. [✅]
 
 (See below image for reference)
 

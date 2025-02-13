@@ -1,0 +1,15 @@
+export enum GenreEnum {
+  ARPG = "ARPG",
+  TPS = "TPS",
+  STRATEGY = "STRATEGY",
+  GOD_GAME = "GOD_GAME",
+  CARD = "CARD",
+  TURN_BASED = "TURN_BASED",
+  MINI_GAMES = "MINI_GAMES",
+  SOCIAL = "SOCIAL",
+  RPG = "RPG",
+  AUTO_BATTLER = "AUTO_BATTLER",
+  RYTHM_GAME = "RYTHM_GAME",
+  MOBA = "MOBA",
+  MMORPG = "MMORPG",
+}
